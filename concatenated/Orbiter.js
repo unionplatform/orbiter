@@ -1,7 +1,9 @@
 //==============================================================================
-// Orbiter_2.1.2.19_Release
+// Hotfixed version of Orbiter_2.1.2.19_Release.
+// Interim release for use until Orbiter's build system is replaced.
+//
 // www.unionplatform.com
-// Release Date: 9-April-2016
+// Original Release Date: 9-April-2016
 // (c) Copyright USER1 Subsystems Corporation
 //==============================================================================
 
@@ -2068,7 +2070,7 @@ net.user1.orbiter.ConnectionMonitor.prototype.dispose = function () {
   this.orbiter.removeEventListener(net.user1.orbiter.OrbiterEvent.CLOSE, this.connectCloseListener, this);
   this.orbiter = null;
   this.msgManager.removeMessageListener("u7", this.u7);
-  this.msgManager(null);
+  this.msgManager = null;
   this.log = null;
 };
 
