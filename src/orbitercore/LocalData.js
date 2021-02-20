@@ -4,10 +4,18 @@
 /** @class*/
 net.user1.utils.LocalData = new Object();
 
-if (typeof localStorage === "undefined") {
-  net.user1.utils.LocalData.data = new net.user1.utils.LocalStorage();
-} else {
+var hasLocalStorage = false;
+try {
+  if (typeof localStorage !== "undefined") {
+    hasLocalStorage = true;
+  }
+} catch (e) {
+  // No local storage
+}
+if (hasLocalStorage) {
   net.user1.utils.LocalData.data = localStorage;
+} else {
+  net.user1.utils.LocalData.data = new net.user1.utils.LocalStorage();
 }
 
 net.user1.utils.LocalData.write = function (record, field, value) {
